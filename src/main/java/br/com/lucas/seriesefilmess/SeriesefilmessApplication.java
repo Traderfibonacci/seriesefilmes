@@ -1,8 +1,6 @@
 package br.com.lucas.seriesefilmess;
 
-import br.com.lucas.seriesefilmess.model.DadosSerie;
-import br.com.lucas.seriesefilmess.service.ConsumoApi;
-import br.com.lucas.seriesefilmess.service.ConverteDados;
+import br.com.lucas.seriesefilmess.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,13 +15,9 @@ public class SeriesefilmessApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ConsumoApi consumoApi = new ConsumoApi();
-		var json = consumoApi.obterDados("https://www.omdbapi.com/?t=breaking+bad&apikey=341121df");
-//		System.out.println(json);
-//		json = consumoApi.obterDados("https://coffee.alexflipnote.dev/random.json");
-		System.out.println(json);
-		ConverteDados conversor = new ConverteDados();
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
+		Principal principal = new Principal();
+		principal.exibeMenu();
+
+
 	}
 }
